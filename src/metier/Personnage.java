@@ -1,33 +1,24 @@
 
 
-public class Personnage
+public class Personnage extends Element
 {
-	private int x;
-	private int y;
-	
-	private velocityY;
-	private int floor;
-	
-	private int width;
-	private int height;
-	
+	private int velocityY;
 	private int jumpPower;
+	private Floor floor;
 	
-	public Personnage()
+	public Personnage( Floor floor )
 	{
-		this(100, 50, 20, 40, 20);
+		this(100, 50, 20, 40, 20, floor);
 	}
 	
-	public Personnage(int x, int y, int width, int height, int jumpPower)
+	public Personnage(int x, int y, int width, int height, int jumpPower, Floor floor)
 	{
-		this.x = x;
-		this.y = y;
+		super(x, y, width, height);
+		this.jumpPower = jumpPower;
+		this.floor = floor;
 		
 		this.velocityY = 0;
 		this.floor = y;
-		
-		this.width = width;
-		this.height = height;
 		
 		this.jumpPower = jumpPower;
 	}
@@ -35,14 +26,14 @@ public class Personnage
 	
 	public void update()
 	{
-		y += velocityY;
-		if (y >= this.floor)
+		this.y += this.velocityY;
+		if (y >= this.floor.getY())
 		{
-			y = this.floor;
-			velocityY = 0;
+			y = this.floor.getY();
+			this.velocityY = 0;
 		}
 		else
-			velocityY += 2;
+			this.velocityY += 2;
 	}
 	
 	public void jump()
@@ -52,10 +43,4 @@ public class Personnage
 			this.velocityY = -this.jumpPower;
 		}
 	}
-	
-	public ing getX()      { return this.x; }
-	public ing getY()      { return this.y; }
-	public ing getWidth()  { return this.width; }
-	public ing getHeight() { return this.height; }
-	
 }
