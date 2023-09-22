@@ -1,2 +1,2 @@
 # BocchiZaure
-Jeu du dynosaure
+Jeu du dynosaure.
