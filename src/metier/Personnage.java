@@ -1,4 +1,4 @@
-
+import java.awt.*;
 
 public class Personnage extends Element
 {
@@ -22,7 +22,12 @@ public class Personnage extends Element
 		
 		this.jumpPower = jumpPower;
 	}
-	
+
+	public void draw(Graphics g)
+	{
+		g.setColor(Color.BLACK);
+		g.fillRect(x, y, width, height);
+	}
 	
 	public void update()
 	{
